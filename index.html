@@ -50,13 +50,8 @@
         .product img {
             width: 250px;
             height: auto;
-            transition: transform 0.2s ease-out;
+            transition: transform 0.1s ease-out;
             transform-style: preserve-3d;
-            filter: drop-shadow(10px 10px 10px rgba(0, 0, 0, 0.3));
-        }
-        .product img:hover {
-            transform: translateY(-5px) scale(1.02);
-            filter: drop-shadow(12px 12px 12px rgba(0,0,0,0.4));
         }
         .product p {
             font-size: 1rem;
@@ -86,6 +81,17 @@
             opacity: 0.8;
             cursor: pointer;
         }
+        .hover-text {
+            position: absolute;
+            font-family: monospace;
+            font-size: 14px;
+            background: rgba(0, 0, 0, 0.8);
+            color: #FFFFFF;
+            padding: 4px 8px;
+            border-radius: 4px;
+            pointer-events: none;
+            display: none;
+        }
     </style>
     <script>
         function updateCountdown() {
@@ -110,6 +116,10 @@
         setInterval(updateCountdown, 1000);
         window.onload = updateCountdown;
 
+        function goToCalendar() {
+            window.location.href = "Calendar.html";
+        }
+
         document.addEventListener("DOMContentLoaded", function() {
             const product = document.querySelector('.product');
             const image = product.querySelector('img');
@@ -122,14 +132,22 @@
                 const x = e.clientX - rect.left - (rect.width/2);
                 const y = e.clientY - rect.top - (rect.height/2);
 
-                const rotateX = y / 15;
-                const rotateY = -x / 15;
+                const rotateX = y / 20; // Adjust for more 3D
+                const rotateY = -x / 20; // Adjust for more 3D
 
-                image.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`;
+                image.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`; //added scale
+
+                const itemName = "20/3/2025";
+                const itemPrice = "WEEK1";
+                hoverText.textContent = `[ ${itemName} ] - ${itemPrice}`;
+                hoverText.style.display = 'block';
+                hoverText.style.left = `${e.pageX + 10}px`;
+                hoverText.style.top = `${e.pageY + 10}px`;
             });
 
             document.addEventListener('mouseleave', () => {
                 image.style.transform = 'rotateX(0deg) rotateY(0deg) scale3d(1,1,1)';
+                hoverText.style.display = 'none';
             });
         });
     </script>
@@ -141,11 +159,14 @@
         <a href="https://1week-2.creator-spring.com/listing/test-01-2025" target="_blank">
             <img src="Screenshot_2025-02-10_at_1.52.48_PM-removebg-preview.png" alt="Product Image">
         </a>
-        <p>[ TESTSHIRT1 ]</p>
+        <p>[ TEST-01 ]</p>
         <p>$[ 30 ]</p>
     </div>
     <div id="countdown">Next drop in: Loading...</div>
     
     <img class="corner-gif" src="original-3f8e1d1e9ededb857269eed529cc73f2.gif" alt="GIF">
+    <img class="photo-button" src="clock-face-eight-oclock-light.svg" alt="Photo Button" onclick="goToCalendar()"> 
 </body>
 </html>
+
+
