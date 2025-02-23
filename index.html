@@ -77,16 +77,14 @@
             height: auto;
             opacity: 0.8;
         }
-        .hover-text {
-            position: absolute;
-            font-family: monospace;
-            font-size: 14px;
-            background: rgba(0, 0, 0, 0.8);
-            color: #FFFFFF;
-            padding: 4px 8px;
-            border-radius: 4px;
-            pointer-events: none;
-            display: none;
+        .photo-button {
+            position: fixed;
+            bottom: 10px;
+            left: 10px;
+            width: 20px;
+            height: auto;
+            opacity: 0.8;
+            cursor: pointer;
         }
     </style>
     <script>
@@ -111,6 +109,29 @@
         
         setInterval(updateCountdown, 1000);
         window.onload = updateCountdown;
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const product = document.querySelector('.product');
+            const image = product.querySelector('img');
+            const hoverText = document.createElement('span');
+            hoverText.classList.add('hover-text');
+            document.body.appendChild(hoverText);
+
+            document.addEventListener('mousemove', (e) => {
+                const rect = product.getBoundingClientRect();
+                const x = e.clientX - rect.left - (rect.width/2);
+                const y = e.clientY - rect.top - (rect.height/2);
+
+                const rotateX = y / 15;
+                const rotateY = -x / 15;
+
+                image.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`;
+            });
+
+            document.addEventListener('mouseleave', () => {
+                image.style.transform = 'rotateX(0deg) rotateY(0deg) scale3d(1,1,1)';
+            });
+        });
     </script>
 </head>
 <body>
