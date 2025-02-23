@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1WEEK</title>
+    <style>
+        body {
+            font-family: monospace;
+            text-align: center;
+            background-color: white;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .marquee {
+            position: absolute;
+            top: 10px;
+            width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+            font-size: 0.8rem;
+        }
+        .marquee span {
+            display: inline-block;
+            padding-left: 100%;
+            animation: marquee 10s linear infinite;
+        }
+        @keyframes marquee {
+            from { transform: translateX(0%); }
+            to { transform: translateX(-100%); }
+        }
+        h1 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        .product {
+            position: relative;
+            perspective: 1000px;
+        }
+        .product img {
+            width: 250px;
+            height: auto;
+            transition: transform 0.2s ease-out;
+            transform-style: preserve-3d;
+            filter: drop-shadow(10px 10px 10px rgba(0, 0, 0, 0.3));
+        }
+        .product img:hover {
+            transform: translateY(-5px) scale(1.02);
+            filter: drop-shadow(12px 12px 12px rgba(0,0,0,0.4));
+        }
+        .product p {
+            font-size: 1rem;
+            margin: 5px 0;
+        }
+        #countdown {
+            font-size: 0.8rem;
+            position: absolute;
+            bottom: 10px;
+            width: 100%;
+            text-align: center;
+        }
+        .corner-gif {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            width: 50px;
+            height: auto;
+            opacity: 0.8;
+        }
+        .photo-button {
+            position: fixed;
+            bottom: 10px;
+            left: 10px;
+            width: 20px;
+            height: auto;
+            opacity: 0.8;
+            cursor: pointer;
+        }
+        .hover-text {
+            position: absolute;
+            font-family: monospace;
+            font-size: 14px;
+            background: rgba(0, 0, 0, 0.8);
+            color: #FFFFFF;
+            padding: 4px 8px;
+            border-radius: 4px;
+            pointer-events: none;
+            display: none;
+        }
+    </style>
+    <script>
+        function updateCountdown() {
+            const now = new Date();
+            const nextSunday = new Date();
+            nextSunday.setDate(now.getDate() + (7 - now.getDay()));
+            nextSunday.setHours(0, 0, 0, 0);
+            
+            if (now.getDay() === 0 && now.getHours() === 0 && now.getMinutes() === 0 && now.getSeconds() === 0) {
+                nextSunday.setDate(nextSunday.getDate() + 7);
+            }
+            
+            const timeLeft = nextSunday - now;
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+            
+            document.getElementById("countdown").textContent = `Next drop in: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+        }
+        
+        setInterval(updateCountdown, 1000);
+        window.onload = updateCountdown;
+
+        function goToCalendar() {
+            window.location.href = "Calendar.html";
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const product = document.querySelector('.product');
+            const image = product.querySelector('img');
+            const hoverText = document.createElement('span');
+            hoverText.classList.add('hover-text');
+            document.body.appendChild(hoverText);
+
+            document.addEventListener('mousemove', (e) => {
+                const rect = product.getBoundingClientRect();
+                const x = e.clientX - rect.left - (rect.width/2);
+                const y = e.clientY - rect.top - (rect.height/2);
+
+                const rotateX = y / 15;
+                const rotateY = -x / 15;
+
+                image.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`;
+
+                const itemName = "20/3/2025";
+                const itemPrice = "WEEK1";
+                hoverText.textContent = `[ ${itemName} ] - ${itemPrice}`;
+                hoverText.style.display = 'block';
+                hoverText.style.left = `${e.pageX + 10}px`;
+                hoverText.style.top = `${e.pageY + 10}px`;
+            });
+
+            document.addEventListener('mouseleave', () => {
+                image.style.transform = 'rotateX(0deg) rotateY(0deg) scale3d(1,1,1)';
+                hoverText.style.display = 'none';
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="marquee"><span>NEW DROP EVERY WEEK — LIMITED TIME ONLY — NEVER RESTOCKED - 1WEEK LIFESPAND - GET IT OR GONE - 7 DAYS ONLY - 1 PRODUCT PER WEEK - ONE AND ONLY</span></div>
+    <h1>1WEEK</h1>
+    <div class="product">
+        <a href="https://1week-2.creator-spring.com/listing/test-01-2025" target="_blank">
+            <img src="Screenshot_2025-02-10_at_1.52.48_PM-removebg-preview.png" alt="Product Image">
+        </a>
+        <p>[ TESTSHIRT1 ]</p>
+        <p>$[ 30 ]</p>
+    </div>
+    <div id="countdown">Next drop in: Loading...</div>
+    
+    <img class="corner-gif" src="original-3f8e1d1e9ededb857269eed529cc73f2.gif" alt="GIF">
+    <img class="photo-button" src="clock-face-eight-oclock-light.svg" alt="Photo Button" onclick="goToCalendar()">
+</body>
+</html>
