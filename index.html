@@ -93,6 +93,21 @@
             pointer-events: none;
             display: none;
         }
+        .social-buttons {
+            position: fixed;
+            bottom: 10px;
+            left: 10px;
+            display: flex;
+            gap: 10px;
+        }
+        .social-button img {
+            width: 24px;
+            height: 24px;
+            transition: opacity 0.2s;
+        }
+        .social-button img:hover {
+            opacity: 0.7;
+        }
     </style>
     <script>
         function updateCountdown() {
@@ -100,20 +115,20 @@
             const nextSunday = new Date();
             nextSunday.setDate(now.getDate() + (7 - now.getDay()));
             nextSunday.setHours(0, 0, 0, 0);
-            
+
             if (now.getDay() === 0 && now.getHours() === 0 && now.getMinutes() === 0 && now.getSeconds() === 0) {
                 nextSunday.setDate(nextSunday.getDate() + 7);
             }
-            
+
             const timeLeft = nextSunday - now;
             const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
             const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-            
+
             document.getElementById("countdown").textContent = `Next drop in: ${days}d ${hours}h ${minutes}m ${seconds}s`;
         }
-        
+
         setInterval(updateCountdown, 1000);
         window.onload = updateCountdown;
 
@@ -164,7 +179,10 @@
         <p>$[ 50 ]</p>
     </div>
     <div id="countdown">Next drop in: Loading...</div>
-    
+    <div class="social-buttons">
+        <a class="social-button" href="https://www.youtube.com/@1WEEK_BRAND" target="_blank"><img src="https://cdn3.iconfinder.com/data/icons/social-network-30/512/social-06-512.png" alt="YouTube"></a>
+        <a class="social-button" href="https://www.instagram.com/1week_brand/" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/2048px-Instagram_logo_2016.svg.png" alt="Instagram"></a>
+    </div>
     <img class="corner-gif" src="original-3f8e1d1e9ededb857269eed529cc73f2.gif" alt="GIF">
 </body>
 </html>
