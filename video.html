@@ -4,16 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Video Player</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+        video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+        }
+    </style>
 </head>
 <body>
-    <video id="myVideo" width="100%" controls>
-        <source src="your-video.mp4" type="video/mp4">
+    <video id="myVideo" autoplay playsinline>
+        <source src="Video.MOV" type="video/mp4">
         Your browser does not support the video tag.
     </video>
 
     <script>
-        document.getElementById('myVideo').addEventListener('ended', function() {
+        const video = document.getElementById('myVideo');
+        
+        // Hide default controls
+        video.removeAttribute("controls");
+
+        // Redirect when video ends
+        video.addEventListener('ended', function() {
             window.location.href = "https://1-wk.com";
+        });
+
+        // Ensure audio plays on some browsers (user interaction required)
+        video.addEventListener('click', function() {
+            video.muted = false;
+            video.play();
         });
     </script>
 </body>
