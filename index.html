@@ -11,18 +11,19 @@
     <title>1WEEK</title>
     <style>
         body {
-    font-family: monospace;
-    text-align: center;
-    background-color: #f6f6f8; /* Updated background color */
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    overflow: hidden;
-}
+            font-family: monospace;
+            text-align: center;
+            background-color: #f6f6f8; /* Updated background color */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        
         .marquee {
             position: absolute;
             top: 10px;
@@ -31,33 +32,40 @@
             white-space: nowrap;
             font-size: 0.8rem;
         }
+        
         .marquee span {
             display: inline-block;
             padding-left: 100%;
             animation: marquee 10s linear infinite;
         }
+        
         @keyframes marquee {
             from { transform: translateX(0%); }
             to { transform: translateX(-100%); }
         }
+        
         h1 {
             font-size: 1.5rem;
             margin-bottom: 10px;
         }
+        
         .product {
             position: relative;
             perspective: 1000px;
         }
+        
         .product img {
             width: 250px;
             height: auto;
             transition: transform 0.1s ease-out;
             transform-style: preserve-3d;
         }
+        
         .product p {
             font-size: 1rem;
             margin: 5px 0;
         }
+        
         #countdown {
             font-size: 0.8rem;
             position: absolute;
@@ -65,6 +73,7 @@
             width: 100%;
             text-align: center;
         }
+        
         .corner-gif {
             position: fixed;
             bottom: 10px;
@@ -73,6 +82,7 @@
             height: auto;
             opacity: 0.8;
         }
+        
         .photo-button {
             position: fixed;
             bottom: 10px;
@@ -82,6 +92,7 @@
             opacity: 0.8;
             cursor: pointer;
         }
+        
         .hover-text {
             position: absolute;
             font-family: monospace;
@@ -93,6 +104,7 @@
             pointer-events: none;
             display: none;
         }
+        
         .social-buttons {
             position: fixed;
             bottom: 10px;
@@ -100,15 +112,64 @@
             display: flex;
             gap: 10px;
         }
+        
         .social-button img {
             width: 24px;
             height: 24px;
             transition: opacity 0.2s;
         }
+        
         .social-button img:hover {
             opacity: 0.7;
         }
+        
+        /* Add media queries for different screen sizes */
+        @media only screen and (max-width: 768px) {
+            .product img {
+                width: 150px;
+            }
+            .social-buttons {
+                position: static;
+                margin-top: 20px;
+            }
+            .corner-gif {
+                position: static;
+                margin-top: 20px;
+            }
+        }
+        
+        @media only screen and (max-width: 480px) {
+            .product img {
+                width: 100px;
+            }
+            .social-buttons {
+                flex-direction: column;
+            }
+        }
     </style>
+</head>
+<body>
+    <div class="marquee"><span>NEW DROP EVERY WEEK — LIMITED TIME ONLY — NEVER RESTOCKED - 1WEEK LIFESPAN - GET IT OR GONE - 7 DAYS ONLY - 1 PRODUCT PER WEEK - ONE AND ONLY</span></div>
+    <h1>1WEEK</h1>
+    <div class="product">
+        <a href="https://1week-2.creator-spring.com/listing/yit-x-1week" target="_blank">
+            <img src="https://mockup-api.teespring.com/v3/image/edCGwZ_-JnKlaczht0byTDdYcRc/800/800.jpg" alt="Product Image">
+        </a>
+        <p>[ 1WEEK X yit ]</p>
+        <p>$[ $27.99 ]</p>
+    </div>
+    <p>[ STREAM 1WEEK by yit ]</p>
+    <div id="countdown">Next drop in: Loading...</div>
+    <div class="social-buttons">
+        <a class="social-button" href="https://www.youtube.com/@1WEEK_BRAND" target="_blank"><img src="https://cdn3.iconfinder.com/data/icons/social-network-30/512/social-06-512.png" alt="YouTube"></a>
+        <a class="social-button" href="https://www.tiktok.com/@1week.brand?is_from_webapp=1&sender_device=pc" target="_blank"><img src="https://static.vecteezy.com/system/resources/previews/023/986/561/non_2x/tiktok-logo-tiktok-logo-transparent-tiktok-icon-transparent-free-free-png.png" alt="TikTok"></a>
+        <a class="social-button" href="https://www.instagram.com/1week_brand/" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/2048px-Instagram_logo_2016.svg.png" alt="Instagram"></a>
+        <a class="social-button" href="https://open.spotify.com/artist/5WEPWwmJRjDOub8mfEs08r?si=45nPbGNdTROoWCHVeWEGaA" target="_blank"><img src="https://storage.googleapis.com/pr-newsroom-wp/1/2023/05/Spotify_Primary_Logo_RGB_Green.png" alt="Spotify"></a>
+        <a class="social-button" href="https://open.spotify.com/album/6pvNa89VxBrAHKUz557cN7?si=84L142xnTXaPhLjMmkLuxA" target="_blank"><img src="!week.jpg" alt="1WEEK"></a>
+        <a class="social-button" href="video.html" target="_blank"><img src="https://icons.iconarchive.com/icons/martz90/circle/512/camera-icon.png" alt="Artist"></a>
+    </div>
+    <img class="corner-gif" src="original-3f8e1d1e9ededb857269eed529cc73f2.gif" alt="GIF">
+    
     <script>
         function updateCountdown() {
             const now = new Date();
@@ -167,28 +228,5 @@
             });
         });
     </script>
-</head>
-<body>
-    <div class="marquee"><span>NEW DROP EVERY WEEK — LIMITED TIME ONLY — NEVER RESTOCKED - 1WEEK LIFESPAN - GET IT OR GONE - 7 DAYS ONLY - 1 PRODUCT PER WEEK - ONE AND ONLY</span></div>
-    <h1>1WEEK</h1>
-    <div class="product">
-        <a href="https://1week-2.creator-spring.com/listing/yit-x-1week" target="_blank">
-            <img src="https://mockup-api.teespring.com/v3/image/edCGwZ_-JnKlaczht0byTDdYcRc/800/800.jpg" alt="Product Image">
-        </a>
-        <p>[ 1WEEK X yit ]</p>
-        <p>$[ $27.99 ]</p>
-    </div>
-        <p>[ STREAM 1WEEK by yit ]</p>
-    </div>
-    <div id="countdown">Next drop in: Loading...</div>
-    <div class="social-buttons">
-        <a class="social-button" href="https://www.youtube.com/@1WEEK_BRAND" target="_blank"><img src="https://cdn3.iconfinder.com/data/icons/social-network-30/512/social-06-512.png" alt="YouTube"></a>
-        <a class="social-button" href="https://www.tiktok.com/@1week.brand?is_from_webapp=1&sender_device=pc" target="_blank"><img src="https://static.vecteezy.com/system/resources/previews/023/986/561/non_2x/tiktok-logo-tiktok-logo-transparent-tiktok-icon-transparent-free-free-png.png" alt="TikTok"></a>
-        <a class="social-button" href="https://www.instagram.com/1week_brand/" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/2048px-Instagram_logo_2016.svg.png" alt="Instagram"></a>
-        <a class="social-button" href="https://open.spotify.com/artist/5WEPWwmJRjDOub8mfEs08r?si=45nPbGNdTROoWCHVeWEGaA" target="_blank"><img src="https://storage.googleapis.com/pr-newsroom-wp/1/2023/05/Spotify_Primary_Logo_RGB_Green.png" alt="Spotify"></a>
-        <a class="social-button" href="https://open.spotify.com/album/6pvNa89VxBrAHKUz557cN7?si=84L142xnTXaPhLjMmkLuxA" target="_blank"><img src="!week.jpg" alt="1WEEK"></a>
-        <a class="social-button" href="video.html" target="_blank"><img src="https://icons.iconarchive.com/icons/martz90/circle/512/camera-icon.png" alt="Artist"></a>
-    </div>
-    <img class="corner-gif" src="original-3f8e1d1e9ededb857269eed529cc73f2.gif" alt="GIF">
 </body>
 </html>
